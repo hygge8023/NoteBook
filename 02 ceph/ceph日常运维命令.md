@@ -87,7 +87,7 @@ ceph osd map ${poolname} ${objname}
 
 此处模拟 osd.3 坏盘
 
-![](检查ceph集群健康状态/image-20230703150914011.png)
+![](ceph日常运维命令/image-20230703150914011.png)
 
 - 关闭 osd 守护进程（*如果osd dameon正常运行,down的osd很快会自行恢复正常,所以需要先关闭是守护进程*）
 
@@ -119,7 +119,7 @@ ceph auth rm osd.3
 
 此时我们查看 osd 状态，osd.3处于 down的状态，且reweight值为0
 
-![](检查ceph集群健康状态/image-20230703152020331.png)
+![](ceph日常运维命令/image-20230703152020331.png)
 
 
 
@@ -134,7 +134,7 @@ ceph osd tree
 
 
 
-![](检查ceph集群健康状态/image-20230704110551472.png)
+![](ceph日常运维命令/image-20230704110551472.png)
 
 
 
