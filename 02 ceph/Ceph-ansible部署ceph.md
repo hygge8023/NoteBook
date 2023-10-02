@@ -210,5 +210,5 @@ ansible-playbook -i hosts site.yml.sample  -vv
 
 ## 10、验证集群状态
 
-![](Ceph核心组件及概念介绍/image-20230628183209763.png)
+![](Ceph-ansible部署ceph/image-20230628183209763.png)
 
