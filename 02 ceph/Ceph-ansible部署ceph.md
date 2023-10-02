@@ -110,7 +110,7 @@ logdir /var/log/chrony
 chronyc sources -v
 ```
 
-![](Ceph核心组件及概念介绍/image-20230626165654294.png)
+![](Ceph-ansible部署ceph/image-20230626165654294.png)
 
 
 
@@ -204,7 +204,7 @@ cd ceph-ansible-stable-6.0/
 ansible-playbook -i hosts site.yml.sample  -vv 
 ```
 
-![](Ceph核心组件及概念介绍/image-20230628162633657.png)
+![](Ceph-ansible部署ceph/image-20230628162633657.png)
 
 
 
