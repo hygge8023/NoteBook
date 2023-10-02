@@ -1,9 +1,4 @@
----
-title: OpenStack Neutron trunk ports
-categories: # 分类
-- openstack
-description: OpenStack Neutron trunk ports （VLAN-aware-VMs）,"VLAN aware VMs"有时也叫做"VM trunk ports", 主要是让虚拟机收发的vlan tagged报文, 能够被虚拟网络所识别和处理
----
+
 
 ​     OpenStack Neutron trunk ports （VLAN-aware-VMs）,"VLAN aware VMs"有时也叫做"VM trunk ports", 主要是让虚拟机收发的vlan tagged报文, 能够被虚拟网络所识别和处理。
 
