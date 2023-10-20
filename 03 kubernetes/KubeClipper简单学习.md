@@ -2,7 +2,7 @@
 
 简介：类似于 Rancher，是一个k8s管理工具。KubeClipper 基于 Kubeadm 封装，可以通过 Web 界面、API，或命令行工具（kcctl）来管理主机节点，可以快速创建和删除 K8S 集群，并可以对已存在的 K8S 集群进行纳管、升级、配置变更、应用部署，以及扩、缩容等操作。
 
- [项目 Github 地址]([*https://github.com/kubeclipper/kubeclipper*](https://github.com/kubeclipper/kubeclipper))
+ [项目 Github 地址]([https://github.com/kubeclipper/kubeclipper*](https://github.com/kubeclipper/kubeclipper))
 
 [KubeClipper 官网](https://kubeclipper.io/)
 
