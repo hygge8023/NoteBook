@@ -212,3 +212,13 @@ ansible-playbook -i hosts site.yml.sample  -vv
 
 ![](Ceph-ansible部署ceph/image-20230628183209763.png)
 
+
+
+## 11、删除集群
+
+
+
+```shell
+ansible-playbook -vv -i hosts infrastructure-playbooks/purge-cluster.yml
+```
+
