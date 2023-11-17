@@ -593,3 +593,23 @@ source /etc/kolla/admin-openrc.sh
 
 
 kolla安装openstack-Yoga版对接Ceph部署完成。
+
+
+
+### 5.4、访问 prometheus 监控服务
+
+查询 prometheus 和 grafana 服务端口
+
+![image-20231117130544392](kolla部署openstack-Yoga/image-20231117130544392.png)
+
+
+
+![image-20231117130828670](kolla部署openstack-Yoga/image-20231117130828670.png)
+
+
+
+![image-20231117130853406](kolla部署openstack-Yoga/image-20231117130853406.png)
+
+
+
+后续可对相关服务进行监控展示
