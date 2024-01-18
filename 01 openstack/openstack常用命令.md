@@ -1,12 +1,39 @@
 
 
-## 配额 「quota」
+## 项目「project」
+
+```shell
+openstack project  purge  -h   # 清理与项目相关的资源
+[--dry-run]  # 列出需要删除的项目资源
+[--keep-project]  # 清理项目资源，但不删除项目
+[--auth-project | --project <project>]   
+[--project-domain <project-domain>]
+```
+
+
+
+### 项目创建
+
+```shell
+openstack project create -h
+openstack user create -h
+openstack role add --user {用户名/id} --project {项目名/id} admin   # 为用户添加项目权限
+openstack role assignment list --project {项目名/id}   --name   # 查看项目的成员 role 角色
+```
+
+
+
+### 项目配额设置
 
 ```shell
 openstack quota set --ram 1024 --instances 5 --cores 3 {项目名}     # 项目限制配额
 ```
 
-## 虚拟机 「server」 
+
+
+
+
+## 虚拟机
 
 ```shell
 openstack console url show {虚拟机名字}
@@ -17,7 +44,23 @@ openstack server resize      # 调整云主机大小
 openstack server event list --long {虚拟机 id}    # 查询云主机的事件
 ```
 
-## 搁置 「shelve」
+
+
+### 取消云主机正在进行的task state
+
+首先尝试reset state来重置task_state，正常情况下reset之后 task_state 应该为null
+
+```shell
+nova --insecure reset-state --active $SERVER_ID
+```
+
+
+
+
+
+
+
+### 搁置 「shelve」
 
 对于一些长时间不使用的虚拟机，即使处于关机状态，仍然会占用着集群资源
 如果需要释放这些资源,则使用shelve来操作,该操作会将server实例作为image保存到glance中,然后在宿主机中删除该server实例
@@ -26,6 +69,33 @@ openstack server event list --long {虚拟机 id}    # 查询云主机的事件
 openstack server shelve {虚机id}  # 机器开启搁置状态 （搁置状态：--status SHELVED_OFFLOADED ）
 openstack server unshelve     # 取消搁置的机器
 ```
+
+
+
+### 迁移  「migrate」
+
+迁移的云主机若内存等资源使用率过高会导致热迁移实例写入内存页面的速度可能比复制它们的速度快
+从而虚拟机产生了内存脏数据,无法完成迁移超时,虚拟机状态error
+
+```shell
+nova live-migration-force-complete 实例ID 迁移ID        # 强制迁移
+nova server-migration-list 实例ID                  # 获取迁移的任务ID
+nova live-migration-abort 实例ID 迁移ID                 # 取消迁移
+
+
+```
+
+
+
+## 疏散
+
+
+
+```shell
+nova host-evacuate --target_host  $目标主机  $异常主机（源主机） # 疏散节点所有云主机
+```
+
+
 
 ## 镜像 「image」
 
@@ -67,14 +137,6 @@ nova interface-attach --port-id  {port id}   {server id}
 
 
 
-## 支付者 「assignment」
-
-```shell
-openstack role assignment list  --project  {项目名}  --name  # 查看用户的支付者
-```
-
-
-
 ## 卷  「volume」
 
 ```shell
@@ -94,17 +156,6 @@ openstack volume set --property set-bootable=true my-volume # 将卷属性设置
 ```
 
 
-
-## 迁移  「migrate」
-
-迁移的云主机若内存等资源使用率过高会导致热迁移实例写入内存页面的速度可能比复制它们的速度快
-从而虚拟机产生了内存脏数据,无法完成迁移超时,虚拟机状态error
-
-```shell
-nova live-migration-force-complete 实例ID 迁移ID        # 强制迁移
-nova server-migration-list 实例ID                  # 获取迁移的任务ID
-nova live-migration-abort 实例ID 迁移ID                 # 取消迁移
-```
 
 
 
